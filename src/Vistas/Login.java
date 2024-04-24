@@ -59,6 +59,7 @@ public class Login extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jtxtusuario = new javax.swing.JTextField();
         jbtnIngresar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -140,7 +141,7 @@ public class Login extends javax.swing.JFrame {
         jbtnIngresar.setText("INGRESAR");
         jbtnIngresar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jbtnIngresar.setContentAreaFilled(false);
-        jbtnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbtnIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jbtnIngresarMouseClicked(evt);
@@ -152,6 +153,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
         background.add(jbtnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 130, 50));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 8)); // NOI18N
+        jLabel5.setText("Versión 2.0.17.04.24");
+        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 90, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -277,6 +282,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;

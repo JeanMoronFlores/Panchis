@@ -13,6 +13,7 @@ public class Usuario {
     private int idUsuario;
     private String nombre;
     private String apellido;
+    private int idRol;
     private String dni;
     private String usuario;
     private String password;
@@ -23,6 +24,7 @@ public class Usuario {
         this.idUsuario =0 ;
         this.nombre = "";
         this.apellido = "";
+        this.idRol =0 ;
         this.dni = "";
         this.usuario = "";
         this.password = "";
@@ -95,6 +97,14 @@ public class Usuario {
 
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+
+    public int getIdRol() {
+        return idRol;
+    }
+
+    public void setIdRol(int idRol) {
+        this.idRol = idRol;
     }
     
     

@@ -5,6 +5,8 @@
 package controlador;
 
 import DAO.Crud_Usuario;
+import Vistas.Dashboard;
+import Vistas.FrmRol;
 import Vistas.FrmUsuario;
 import conexion.Conexion;
 import java.awt.Color;
@@ -68,7 +70,7 @@ public class Ctrl_Usuario implements ActionListener {
             
         }
         if (e.getSource() == vista.btn_guardar) {
-
+            //VALIDADAR QUE LOS CAMPOS NO ESTRIAN NNUOS
             if (FrmUsuario.txt_nombre.getText().isEmpty() || FrmUsuario.txt_apellido.getText().isEmpty() || FrmUsuario.txt_dni.getText().isEmpty() || FrmUsuario.txt_usuario.getText().isEmpty()
                     || FrmUsuario.txt_password.getText().isEmpty() || FrmUsuario.txt_telefono.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Completa todos los campos");
@@ -108,7 +110,7 @@ public class Ctrl_Usuario implements ActionListener {
             if (idUsuario == 0) {
                 JOptionPane.showMessageDialog(null, "¡Seleccione en la tabla un Usuario!");
             } else {
-                if (FrmUsuario.txt_gestionar_nombre.getText().isEmpty() || FrmUsuario.txt_gestionar_apellido.getText().isEmpty() || FrmUsuario.txt_gestionar_dni.getText().isEmpty() || FrmUsuario.txt_gestionar_usuario.getText().isEmpty()
+                if (FrmUsuario.txt_gestionar_nombre.getText().isEmpty() || FrmUsuario.txt_gestionar_apellido.getText().isEmpty() || FrmUsuario.txt_gestionar_rol.getText().isEmpty() || FrmUsuario.txt_gestionar_dni.getText().isEmpty() || FrmUsuario.txt_gestionar_usuario.getText().isEmpty()
                         || FrmUsuario.txt_gestionar_password.getText().isEmpty() || FrmUsuario.txt_gestionar_telefono.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "¡Completa todos los campos!");
 
@@ -116,6 +118,7 @@ public class Ctrl_Usuario implements ActionListener {
                     usuario.setNombre(FrmUsuario.txt_gestionar_nombre.getText().trim());
                     usuario.setApellido(FrmUsuario.txt_gestionar_apellido.getText().trim());
                     usuario.setDni(FrmUsuario.txt_gestionar_dni.getText().trim());
+                    usuario.setIdRol(Integer.parseInt(FrmUsuario.txt_gestionar_rol.getText().trim()));
                     usuario.setUsuario(FrmUsuario.txt_gestionar_usuario.getText().trim());
                     usuario.setPassword(FrmUsuario.txt_gestionar_password.getText().trim());
                     usuario.setTelefono(FrmUsuario.txt_gestionar_telefono.getText().trim());
@@ -151,6 +154,12 @@ public class Ctrl_Usuario implements ActionListener {
                     Crud_Usuario.Limpiar2();
                 }
             }
+        }
+        
+        //PARA GESTIONAR BOTONES PARA EDITAR roles
+        if (e.getSource() == vista.btn_Roles) {
+            FrmRol p11 = new FrmRol();
+            Dashboard.ShowPanel(p11);
         }
 
     }

@@ -4,6 +4,7 @@
  */
 package DAO;
 
+
 import Vistas.FrmUsuario;
 import static Vistas.FrmUsuario.jTable_usuario;
 import java.awt.event.MouseAdapter;
@@ -74,7 +75,25 @@ public class Crud_Usuario extends Conexion {
         FrmUsuario.txt_gestionar_telefono.setText("");
 
     }
+   public static void CargarComboRol() {
+        Connection cn = Conexion.conectar();
+        String sql = "select * from tb_Rol";
+        Statement st;
+        try {
 
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            FrmUsuario.jComboBoxRol.removeAllItems();
+            FrmUsuario.jComboBoxRol.addItem("Seleccione rol:");
+            while (rs.next()) {
+                FrmUsuario.jComboBoxRol.addItem(rs.getString("rol"));
+            }
+            cn.close();
+
+        } catch (SQLException e) {
+            System.out.println("¡Error al cargar categorias!");
+        }
+    }
     /**
      *
      * metodo panel izquierdo
@@ -93,6 +112,7 @@ public class Crud_Usuario extends Conexion {
             model.addColumn("N°");//ID
             model.addColumn("Nombre");
             model.addColumn("Apellido");
+            model.addColumn("Rol");
             model.addColumn("Dni");
             model.addColumn("Usuario");
             model.addColumn("Contraseña");
@@ -100,9 +120,9 @@ public class Crud_Usuario extends Conexion {
             model.addColumn("Estado");
             // SE DEBERÁ AÑADIR CAMPO DE ROL LO QUE PROBOCARÁ ERRORES EN LAS TABLLAS, RECORDATORIO PARA EL FUTURO
             while (rs.next()) {
-                Object fila[] = new Object[8];
-                for (int i = 0; i < 8; i++) {
-                    if (i == 7) {
+                Object fila[] = new Object[9];
+                for (int i = 0; i < 9; i++) {
+                    if (i == 8) {
                         String estado = String.valueOf(rs.getObject(i + 1));
                         if (estado.equalsIgnoreCase("1")) {
                             fila[i] = "Activo";
@@ -145,6 +165,8 @@ public class Crud_Usuario extends Conexion {
                 if (rs.next()) {
                     FrmUsuario.txt_gestionar_nombre.setText(rs.getString("nombre")); //"
                     FrmUsuario.txt_gestionar_apellido.setText(rs.getString("apellido")); //"
+                    FrmUsuario.txt_gestionar_rol.setText(rs.getString("idRol")); //"
+                    FrmUsuario.txt_gestionar_apellido.setText(rs.getString("apellido")); //"
                     FrmUsuario.txt_gestionar_dni.setText(rs.getString("dni")); //"
                     FrmUsuario.txt_gestionar_usuario.setText(rs.getString("usuario")); //"
                     FrmUsuario.txt_gestionar_password.setText(rs.getString("password")); //"
@@ -169,15 +191,16 @@ public class Crud_Usuario extends Conexion {
         Connection cn = Conexion.conectar();
         try {
 
-            PreparedStatement consulta = cn.prepareStatement("INSERT INTO tb_usuario VALUES (?,?,?,?,?,?,?,?)");
+            PreparedStatement consulta = cn.prepareStatement("INSERT INTO tb_usuario VALUES (?,?,?,?,?,?,?,?,?)");
             consulta.setInt(1, 0); // id
             consulta.setString(2, objeto.getNombre());
             consulta.setString(3, objeto.getApellido());
-            consulta.setString(4, objeto.getDni());
-            consulta.setString(5, objeto.getUsuario());
-            consulta.setString(6, objeto.getPassword());
-            consulta.setString(7, objeto.getTelefono());
-            consulta.setInt(8, objeto.getEstado());
+            consulta.setInt(4, objeto.getEstado());
+            consulta.setString(5, objeto.getDni());
+            consulta.setString(6, objeto.getUsuario());
+            consulta.setString(7, objeto.getPassword());
+            consulta.setString(8, objeto.getTelefono());
+            consulta.setInt(9, objeto.getEstado());
 
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
@@ -189,7 +212,7 @@ public class Crud_Usuario extends Conexion {
         return respuesta;
     }
 
-    //metodo para consulta si el usuario ya está guardado( ya existe)
+    //metodo para consulta si el usuario ya está guardado( ya existe) mediante el dni
     public boolean existeUsuario(String dni) {
         boolean respuesta = false;
         String sql = "SELECT dni FROM tb_usuario WHERE dni='" + dni + "';";
@@ -220,21 +243,22 @@ public class Crud_Usuario extends Conexion {
         Connection cn = Conexion.conectar();
         try {
 
-            PreparedStatement consulta = cn.prepareStatement("update tb_usuario set nombre=?, apellido = ?, dni = ?, usuario = ?, password= ?, telefono = ?, estado = ? where idUsuario ='" + idUsuario + "'");
+            PreparedStatement consulta = cn.prepareStatement("update tb_usuario set nombre=?, apellido = ?, idRol = ?, dni = ?, usuario = ?, password= ?, telefono = ?, estado = ? where idUsuario ='" + idUsuario + "'");
             consulta.setString(1, objeto.getNombre());
             consulta.setString(2, objeto.getApellido());
-            consulta.setString(3, objeto.getDni());
-            consulta.setString(4, objeto.getUsuario());
-            consulta.setString(5, objeto.getPassword());
-            consulta.setString(6, objeto.getTelefono());
-            consulta.setInt(7, objeto.getEstado());
+            consulta.setInt(3, objeto.getIdRol());
+            consulta.setString(4, objeto.getDni());
+            consulta.setString(5, objeto.getUsuario());
+            consulta.setString(6, objeto.getPassword());
+            consulta.setString(7, objeto.getTelefono());
+            consulta.setInt(8, objeto.getEstado());
 
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
             }
             cn.close();
         } catch (SQLException e) {
-            System.out.println("Error al actualizar usuario desde el crud: " + e);
+            System.out.println("Error al actualizar usuario desde el crud_usuario método actualizar: " + e);
         }
         return respuesta;
     }

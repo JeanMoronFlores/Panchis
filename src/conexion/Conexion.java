@@ -9,8 +9,10 @@ public class Conexion {
     //conexion local
     public static Connection conectar() {
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_ventas_prueba", "root", "");//este no sirve ya que se trabaja con la conexion del paquete DAO
-            return cn; //la rutaaún sirve para las categorias, actualizar más tarde
+          
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_pizza", "root", "");
+//            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_ventas_prueba", "root", "");//este no sirve ya que se trabaja con la conexion del paquete DAO
+            return cn; //la ruta aún sirve para las categorias, actualizar más tarde
             
 
         } catch (SQLException e) {

@@ -83,6 +83,8 @@ public class Crud_Producto extends Conexion {
 //        }
 //        return obtenerIdCategoriaCombo;
 //    }
+    
+    
     /**
      * todo derecha
      */

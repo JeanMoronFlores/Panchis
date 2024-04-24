@@ -18,19 +18,19 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.Categoria;
 
-public class Crud_Categoria extends Conexion {
+public class Crud_Rol extends Conexion {
   public static int idCategoria;
-    public Crud_Categoria() {
+    public Crud_Rol() {
         
     }
    
      
-     //metodo que muestra en un JTable los registros dela tabla categoria
-    public static void CargarTablaCategorias() {
+     //metodo que muestra en un JTable los registros de la tabla rol
+    public static void CargarTablaRol() {
         
         Connection con = Conexion.conectar();
         DefaultTableModel model = new DefaultTableModel(); //verificar
-        String sql = "SELECT idCategoria, discripcion, estado FROM tb_categoria";
+        String sql = "SELECT idRol, rol, estado FROM tb_Rol";
         Statement st;
         try {
             st = con.createStatement();
@@ -40,7 +40,7 @@ public class Crud_Categoria extends Conexion {
 
            
             model.addColumn("id");
-            model.addColumn("nombre");
+            model.addColumn("rol");
             model.addColumn("estado");
 
             while (rs.next()) {

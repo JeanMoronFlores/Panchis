@@ -21,6 +21,8 @@ public class Dashboard extends javax.swing.JFrame {
     /**
      * Creates new form Dashboard
      */
+    private String rolUsuario;
+    
     public Dashboard() {
         // mostrara el jform de bienvenida al iniciar
         initComponents();
@@ -40,6 +42,32 @@ public class Dashboard extends javax.swing.JFrame {
          */
 
     }
+        public Dashboard(String rol) {
+        this.rolUsuario = rol;
+        initComponents();
+        // Resto del código...
+        bloquearBotonesSegunRol();
+    }
+        
+         // Esta función bloquea los botones según el rol del usuario
+    private void bloquearBotonesSegunRol() {
+        // Supongamos que solo hay dos roles posibles: "administrador" y "empleado"
+        if (rolUsuario.equals("1")) {
+            // Aquí habilitas los botones para el rol de administrador
+            jbtnUsuario.setEnabled(true);
+            jbtnProducto.setEnabled(true);
+            // Otros botones que el administrador pueda usar
+        } else if (rolUsuario.equals("2")) {
+            // Aquí habilitas los botones para el rol de empleado
+            jbtnUsuario.setEnabled(false);
+            jbtnProducto.setEnabled(true);
+            // Otros botones que el empleado pueda usar
+        }
+    }
+        
+        
+        
+        
     //ICONO DEL SISTEMA
 
     public Image getIconImage() {
@@ -75,6 +103,7 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnMenu = new javax.swing.JButton();
         Separator9 = new javax.swing.JSeparator();
         jbtnCliente = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         Contenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -106,7 +135,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(309, 309, 309)
                 .addComponent(Titulo_header)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         HeaderLayout.setVerticalGroup(
@@ -133,7 +162,7 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnUsuario.setBorder(null);
         jbtnUsuario.setBorderPainted(false);
         jbtnUsuario.setContentAreaFilled(false);
-        jbtnUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbtnUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnUsuarioActionPerformed(evt);
@@ -145,7 +174,7 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnSalir.setText("CERRAR SESION");
         jbtnSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jbtnSalir.setContentAreaFilled(false);
-        jbtnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbtnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnSalirActionPerformed(evt);
@@ -165,7 +194,7 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnProducto.setBorder(null);
         jbtnProducto.setBorderPainted(false);
         jbtnProducto.setContentAreaFilled(false);
-        jbtnProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbtnProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnProductoActionPerformed(evt);
@@ -185,7 +214,7 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnCategoria.setBorder(null);
         jbtnCategoria.setBorderPainted(false);
         jbtnCategoria.setContentAreaFilled(false);
-        jbtnCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbtnCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnCategoriaActionPerformed(evt);
@@ -202,7 +231,7 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnFacturar.setBorder(null);
         jbtnFacturar.setBorderPainted(false);
         jbtnFacturar.setContentAreaFilled(false);
-        jbtnFacturar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnFacturar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbtnFacturar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnFacturarActionPerformed(evt);
@@ -219,7 +248,7 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnReportes.setBorder(null);
         jbtnReportes.setBorderPainted(false);
         jbtnReportes.setContentAreaFilled(false);
-        jbtnReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbtnReportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnReportesActionPerformed(evt);
@@ -239,7 +268,7 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnHistorial.setBorder(null);
         jbtnHistorial.setBorderPainted(false);
         jbtnHistorial.setContentAreaFilled(false);
-        jbtnHistorial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnHistorial.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbtnHistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnHistorialActionPerformed(evt);
@@ -253,7 +282,7 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnMenu.setBorder(null);
         jbtnMenu.setBorderPainted(false);
         jbtnMenu.setContentAreaFilled(false);
-        jbtnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbtnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnMenuActionPerformed(evt);
@@ -271,48 +300,58 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnCliente.setBorder(null);
         jbtnCliente.setBorderPainted(false);
         jbtnCliente.setContentAreaFilled(false);
-        jbtnCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbtnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnClienteActionPerformed(evt);
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 8)); // NOI18N
+        jLabel3.setText("Versión 2.0.17.04.24");
+
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuLayout.createSequentialGroup()
-                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jbtnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(MenuLayout.createSequentialGroup()
-                            .addGap(13, 13, 13)
-                            .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(Separator1)
-                                .addComponent(Separator2)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
-                                    .addComponent(jbtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(8, 8, 8))
-                                .addComponent(jbtnUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)))
-                        .addGroup(MenuLayout.createSequentialGroup()
-                            .addGap(12, 12, 12)
-                            .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jbtnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(Separator9)
-                                    .addComponent(Separator8, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Separator7, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Separator6, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Separator5, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Separator4, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Separator3, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jbtnCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jbtnFacturar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jbtnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jbtnHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jbtnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))))))
+                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jbtnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jbtnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(MenuLayout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Separator1)
+                                    .addComponent(Separator2)
+                                    .addComponent(jbtnUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)))
+                            .addGroup(MenuLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(MenuLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jbtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(Separator9)
+                                        .addComponent(Separator8, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Separator7, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Separator6, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Separator5, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Separator4, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Separator3, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jbtnCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jbtnFacturar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jbtnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jbtnHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jbtnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)))))))
                 .addContainerGap(11, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,7 +366,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(jbtnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Separator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbtnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Separator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -352,8 +391,10 @@ public class Dashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Separator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addComponent(jbtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         Contenido.setBackground(new java.awt.Color(204, 204, 204));
@@ -491,6 +532,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel Titulo_header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton jbtnCategoria;
     private javax.swing.JButton jbtnCliente;
     private javax.swing.JButton jbtnFacturar;
@@ -513,4 +555,5 @@ public class Dashboard extends javax.swing.JFrame {
         Contenido.repaint();
 
     }
+    
 }
