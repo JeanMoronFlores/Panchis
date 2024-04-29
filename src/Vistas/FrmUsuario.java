@@ -57,6 +57,7 @@ public class FrmUsuario extends javax.swing.JPanel {
         btn_auditoria = new javax.swing.JButton();
         btn_Roles = new javax.swing.JButton();
         txt_gestionar_rol = new javax.swing.JTextField();
+        jComboBox_gestionarRol = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -84,7 +85,8 @@ public class FrmUsuario extends javax.swing.JPanel {
         btn_guardar.setText("GUARDAR");
         btn_guardar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_guardar.setContentAreaFilled(false);
-        btn_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_guardar.setFocusPainted(false);
         btn_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_guardarActionPerformed(evt);
@@ -94,7 +96,7 @@ public class FrmUsuario extends javax.swing.JPanel {
         txt_dni.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "DNI"));
         txt_dni.setPreferredSize(new java.awt.Dimension(50, 50));
 
-        jComboBoxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione ROL:", "ADMIN", "CAJERO", "MESERO", "DUEÑO", " " }));
+        jComboBoxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione ROL:", "ADMIN", "CAJERO", "MESERO" }));
         jComboBoxRol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxRolActionPerformed(evt);
@@ -179,7 +181,8 @@ public class FrmUsuario extends javax.swing.JPanel {
         btn_eliminar.setText("ELIMINAR");
         btn_eliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_eliminar.setContentAreaFilled(false);
-        btn_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_eliminar.setFocusPainted(false);
 
         btn_actualizar.setBackground(new java.awt.Color(255, 204, 0));
         btn_actualizar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -187,7 +190,8 @@ public class FrmUsuario extends javax.swing.JPanel {
         btn_actualizar.setText("ACTUALIZAR");
         btn_actualizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_actualizar.setContentAreaFilled(false);
-        btn_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_actualizar.setFocusPainted(false);
 
         txt_gestionar_password.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Password"));
 
@@ -205,7 +209,8 @@ public class FrmUsuario extends javax.swing.JPanel {
         btn_buscar.setText("CONSULTAR");
         btn_buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_buscar.setContentAreaFilled(false);
-        btn_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_buscar.setFocusPainted(false);
 
         txt_buscar_dniUsuario.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Digita DNI para Buscar usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
@@ -214,23 +219,32 @@ public class FrmUsuario extends javax.swing.JPanel {
         btn_auditoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/auditoria.png"))); // NOI18N
         btn_auditoria.setText("AUDITORIAS");
         btn_auditoria.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        btn_auditoria.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_auditoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_auditoria.setFocusPainted(false);
 
         btn_Roles.setBackground(new java.awt.Color(255, 204, 0));
         btn_Roles.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_Roles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/project-manager.png"))); // NOI18N
         btn_Roles.setText("ROLES");
         btn_Roles.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        btn_Roles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_Roles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Roles.setFocusPainted(false);
 
         txt_gestionar_rol.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Rol"));
+
+        jComboBox_gestionarRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione ROL:", "ADMIN", "CAJERO", "MESERO" }));
+        jComboBox_gestionarRol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_gestionarRolActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btn_Roles, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,20 +263,22 @@ public class FrmUsuario extends javax.swing.JPanel {
                         .addComponent(txt_buscar_dniUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(txt_gestionar_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_gestionar_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(txt_gestionar_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txt_gestionar_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(13, 13, 13)
-                            .addComponent(txt_gestionar_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txt_gestionar_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_gestionar_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(21, 21, 21)
+                            .addComponent(jComboBox_gestionarRol, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(txt_gestionar_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(txt_gestionar_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(txt_gestionar_password, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(txt_gestionar_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,11 +291,15 @@ public class FrmUsuario extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_gestionar_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_gestionar_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_gestionar_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_gestionar_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jComboBox_gestionarRol, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_gestionar_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_gestionar_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_gestionar_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_gestionar_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_gestionar_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -318,6 +338,10 @@ public class FrmUsuario extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxRolActionPerformed
 
+    private void jComboBox_gestionarRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_gestionarRolActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_gestionarRolActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btn_Roles;
@@ -327,6 +351,7 @@ public class FrmUsuario extends javax.swing.JPanel {
     public javax.swing.JButton btn_eliminar;
     public javax.swing.JButton btn_guardar;
     public static javax.swing.JComboBox<String> jComboBoxRol;
+    public static javax.swing.JComboBox<String> jComboBox_gestionarRol;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;

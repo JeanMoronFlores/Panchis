@@ -99,7 +99,7 @@ public class Ctrl_Producto implements ActionListener {
             iva = FrmProducto.jComboBoxIGV.getSelectedItem().toString().trim();
             categoria = FrmProducto.jComboBoxCategoria.getSelectedItem().toString().trim();
 
-            //validar campos
+            //validar campos no nulos
             if (FrmProducto.txt_nombre.getText().equals("") || FrmProducto.txt_cantidad.getText().equals("") || FrmProducto.txt_precio.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Complete todos los campos");
 //                FrmProducto.txt_nombre.setBackground(Color.red);
@@ -156,7 +156,7 @@ public class Ctrl_Producto implements ActionListener {
                                 producto.setEstado(1);
 
                                 if (controlProducto.guardar(producto)) {
-                                    JOptionPane.showMessageDialog(null, "Registro Guardado");
+                                    JOptionPane.showMessageDialog(null, "Producto Guardado");
 //                                txt_nombre.setBackground(Color.green);
 //                                txt_cantidad.setBackground(Color.green);
 //                                txt_precio.setBackground(Color.green);

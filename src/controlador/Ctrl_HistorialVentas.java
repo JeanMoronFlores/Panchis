@@ -40,7 +40,7 @@ public class Ctrl_HistorialVentas implements ActionListener {
 
             } else {
                 String categoriaBuscar = FrmHistorialVentas.txt_buscar_idVenta.getText().trim();
-                Connection cn = Conexion.conectar();
+                Connection cn = DAO.Conexion.conectar();
                 String sql = "SELECT * FROM tb_cabecera_venta where idCabeceraVenta = '" + categoriaBuscar + "'";
                 Statement st;
                 try {

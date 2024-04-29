@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 //import javax.swing.table.DefaultTableModel;
 import modelo.Rol;
 
@@ -43,14 +44,15 @@ public class Ctrl_Rol implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
         if (e.getSource() == vista.btn_buscar) {
             //BUSCA EL ROL SEGUN EL ID
             if (FrmRol.txt_buscar_idRol.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Escribe el ID de la categoria a buscar");
+                JOptionPane.showMessageDialog(null, "Escribe el ID del Rol a buscar");
 
             } else {
                 String RolBuscar = FrmRol.txt_buscar_idRol.getText().trim();
-                Connection cn = Conexion.conectar();
+               Connection cn = DAO.Conexion.conectar();
                 String sql = "SELECT * FROM tb_Rol where idRol = '" + RolBuscar + "'";
                 Statement st;
                 try {
@@ -58,11 +60,11 @@ public class Ctrl_Rol implements ActionListener {
                     ResultSet rs = st.executeQuery(sql);
                     if (rs.next()) {
                         //error ortográfico persistente en todo el código tener que corregirlo 
-                        FrmRol.txt_gestionar_discripcion.setText(rs.getString("discripcion")); //"
+                        FrmRol.txt_gestionar_nombre.setText(rs.getString("rol")); //"
 
 
                     } else {
-                        JOptionPane.showMessageDialog(null, "¡ID de categoria incorrecta o no encontrada!");
+                        JOptionPane.showMessageDialog(null, "¡ID de Rol incorrecta o no encontrada!");
                     }
                     FrmRol.txt_buscar_idRol.setText("");
                     cn.close();
@@ -72,79 +74,79 @@ public class Ctrl_Rol implements ActionListener {
             }
             
         }
-//        if (e.getSource() == vista.btn_guardar) {
-//            Rol rol = new Rol();
-//            Crud_Rol controlRol = new Crud_Rol();
-//            rol.setRol(FrmRol.txt_gestionar_discripcion.getText().trim());
-//            //validar si el campo esta vacio
-//            if (FrmRol.txt_gestionar_discripcion.getText().isEmpty()) {
-//                JOptionPane.showMessageDialog(null, "complete todos los campos");
-//            } else {
-//                if (!controlRol.existeCategoria(FrmRol.txt_gestionar_discripcion.getText().trim())) {
-//                    rol.setRol(FrmRol.txt_gestionar_discripcion.getText().trim());
-//                    rol.setEstado(1); //guarda el campo estado con 1
-//                    if (controlRol.guardar(rol)) {
-//                        JOptionPane.showMessageDialog(null, "Registro guardado");
+        if (e.getSource() == vista.btn_guardar) {
+            Rol rol = new Rol();
+            Crud_Rol controlRol = new Crud_Rol();
+            rol.setRol(FrmRol.txt_rol.getText().trim());
+            //validar si el campo esta vacio
+            if (FrmRol.txt_rol.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "complete todos los campos");
+            } else {
+                if (!controlRol.existeRol(FrmRol.txt_rol.getText().trim())) {
+                    rol.setRol(FrmRol.txt_rol.getText().trim());
+                    rol.setEstado(1); //guarda el campo estado con 1
+                    if (controlRol.guardar(rol)) {
+                        JOptionPane.showMessageDialog(null, "Registro guardado");
+
+//                         Limpiar el modelo de la tabla(proceso inncesario y provoca error)
+//                    DefaultTableModel model = (DefaultTableModel) FrmRol.jTable_rol.getModel();
+//                    model.setRowCount(0);
+                        // Volver a cargar los datos en el modelo de la tabla
+                        Crud_Rol.CargarTablaRol();
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error al guardar");
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "La categoria ya se encuentra en la base de datos");
+                }
+
+            }
+            //limpiar campos
+            FrmRol.txt_gestionar_nombre.setText("");
+        }
 //
-//                        // Limpiar el modelo de la tabla(proceso inncesario y provoca error)
-////                    DefaultTableModel model = (DefaultTableModel) jTable_categoria.getModel();
-////                    model.setRowCount(0);
-//                        // Volver a cargar los datos en el modelo de la tabla
-//                        Crud_Rol.CargarTablaRol();
+        if (e.getSource() == vista.btn_actualizar) {
+            int idRol = Crud_Rol.idRol;
+            if (!FrmRol.txt_gestionar_nombre.getText().isEmpty()) {
+                Rol rol = new Rol();
+                Crud_Rol controlRol= new Crud_Rol();
+                rol.setRol(FrmRol.txt_gestionar_nombre.getText().trim());
+
+                if (controlRol.actualizar(rol,idRol)) {
+
+                    JOptionPane.showMessageDialog(null, "Rol Actualizado");
+                    FrmRol.txt_gestionar_nombre.setText("");
+                    Crud_Rol.CargarTablaRol();
+                } else {
+                    JOptionPane.showMessageDialog(null, "error al actualizar rol desde el controlador ");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "seleccione un Rol");
+            }
+
+        }
 //
-//                    } else {
-//                        JOptionPane.showMessageDialog(null, "Error al guardar");
-//                    }
-//
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "La categoria ya se encuentra en la base de datos");
-//                }
-//
-//            }
-//            //limpiar campos
-//            FrmRol.txt_gestionar_discripcion.setText("");
-//        }
-//
-//        if (e.getSource() == vista.btn_actualizar) {
-//            int idRol = Crud_Rol.idCategoria;
-//            if (!FrmRol.txt_gestionar_discripcion.getText().isEmpty()) {
-//                Rol rol = new Rol();
-//                Crud_Rol controlRol= new Crud_Rol();
-//                rol.setRol(FrmRol.txt_gestionar_discripcion.getText().trim());
-//
-//                if (controlRol.actualizar(rol,idRol)) {
-//
-//                    JOptionPane.showMessageDialog(null, "Categoria Actualizada");
-//                    FrmRol.txt_gestionar_discripcion.setText("");
-//                    Crud_Rol.CargarTablaRol();
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "error al actualizar categoria desde el controlador ");
-//                }
-//
-//            } else {
-//                JOptionPane.showMessageDialog(null, "seleccione una categoria");
-//            }
-//
-//        }
-//
-//        if (e.getSource() == vista.btn_eliminar) {
-//            if (!FrmCategoria.txt_gestionar_discripcion.getText().isEmpty()) {
-//                Categoria categoria = new Categoria();
-//                Crud_Categoria controlCategoria = new Crud_Categoria();
-//                categoria.setDiscripcion(FrmCategoria.txt_discripcion.getText().trim());
-//                int idCategoria = Crud_Categoria.idCategoria;
-//                if (!controlCategoria.eliminar(idCategoria)) {
-//
-//                    JOptionPane.showMessageDialog(null, "Categoria Eliminada");
-//                    FrmCategoria.txt_gestionar_discripcion.setText("");
-//                    Crud_Categoria.CargarTablaCategorias();
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "error al eliminar categoria");
-//                }
-//            } else {
-//                JOptionPane.showMessageDialog(null, "seleccione una categoria");
-//            }
-//        }
+        if (e.getSource() == vista.btn_eliminar) {
+            if (!FrmRol.txt_gestionar_nombre.getText().isEmpty()) {
+                Rol categoria = new Rol();
+                Crud_Rol controlRol = new Crud_Rol();
+                categoria.setRol(FrmRol.txt_gestionar_nombre.getText().trim());
+                int idRol = Crud_Rol.idRol;
+                if (!controlRol.eliminar(idRol)) {
+
+                    JOptionPane.showMessageDialog(null, "Categoria Eliminada");
+                    FrmRol.txt_gestionar_nombre.setText("");
+                    Crud_Rol.CargarTablaRol();
+                } else {
+                    JOptionPane.showMessageDialog(null, "error al eliminar rol");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "seleccione un rol");
+            }
+        }
 
 
     }

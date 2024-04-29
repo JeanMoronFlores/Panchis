@@ -6,8 +6,6 @@ package Vistas;
 
 import DAO.Crud_Menu;
 
-
-
 /**
  *
  * @author Jean
@@ -19,12 +17,18 @@ public class FrmMenu extends javax.swing.JPanel {
      */
     public FrmMenu() {
         initComponents();
+
+//        jTable_pizza.setEnabled(false);
+//        jTable_pizza.setEditingColumn(0);
+//        jTable_pizza.setEditingRow(0);
+
         Crud_Menu.CargarTablaPizza();
         Crud_Menu.CargarTablaPiqueos();
         Crud_Menu.CargarTablaBebidas();
 //        this.CargarTablaPizza();
 //        this.CargarTablaBebidas();
 //        this.CargarTablaPiqueos();
+
     }
 
     /**
@@ -132,7 +136,15 @@ public class FrmMenu extends javax.swing.JPanel {
             new String [] {
                 "PIZZA", "TAMAÑO", "PRECIO"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable_pizza.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable_pizzaMouseClicked(evt);
@@ -314,9 +326,5 @@ public class FrmMenu extends javax.swing.JPanel {
     public static javax.swing.JTextField txt_gestionar_nombre;
     public static javax.swing.JTextField txt_gestionar_precio;
     // End of variables declaration//GEN-END:variables
-  
-   
-
-
 
 }

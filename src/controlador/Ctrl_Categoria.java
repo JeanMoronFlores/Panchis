@@ -51,7 +51,7 @@ public class Ctrl_Categoria implements ActionListener {
 
             } else {
                 String categoriaBuscar = FrmCategoria.txt_buscar_idCategoria.getText().trim();
-                Connection cn = Conexion.conectar();
+               Connection cn = DAO.Conexion.conectar();
                 String sql = "SELECT * FROM tb_categoria where idCategoria = '" + categoriaBuscar + "'";
                 Statement st;
                 try {

@@ -2,6 +2,22 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/JEAN/Documents/NetBeansProjects/PanchisIntegradorV2/src/modelo/Auditoria.java</file>
+            <file>file:/C:/Users/JEAN/Documents/NetBeansProjects/PanchisIntegradorV2/src/Vistas/FrmPago.java</file>
+            <file>file:/C:/Users/JEAN/Documents/NetBeansProjects/PanchisIntegradorV2/src/DAO/Crud_Categoria.java</file>
+            <file>file:/C:/Users/JEAN/Documents/NetBeansProjects/PanchisIntegradorV2/src/Vistas/FrmAuditoria.java</file>
+            <file>file:/C:/Users/JEAN/Documents/NetBeansProjects/PanchisIntegradorV2/src/Vistas/FrmReportes.java</file>
+            <file>file:/C:/Users/JEAN/Documents/NetBeansProjects/PanchisIntegradorV2/src/Vistas/Frm_Graficas.java</file>
+            <file>file:/C:/Users/JEAN/Documents/NetBeansProjects/PanchisIntegradorV2/src/Vistas/FrmMenu.java</file>
+            <file>file:/C:/Users/JEAN/Documents/NetBeansProjects/PanchisIntegradorV2/src/controlador/Ctrl_Usuario.java</file>
+            <file>file:/C:/Users/JEAN/Documents/NetBeansProjects/PanchisIntegradorV2/src/Vistas/Dashboard.java</file>
+            <file>file:/C:/Users/JEAN/Documents/NetBeansProjects/PanchisIntegradorV2/src/DAO/Crud_Usuario.java</file>
+            <file>file:/C:/Users/JEAN/Documents/NetBeansProjects/PanchisIntegradorV2/src/Vistas/FrmRol.java</file>
+            <file>file:/C:/Users/JEAN/Documents/NetBeansProjects/PanchisIntegradorV2/src/DAO/Crud_Auditoria.java</file>
+            <file>file:/C:/Users/JEAN/Documents/NetBeansProjects/PanchisIntegradorV2/src/modelo/Rol.java</file>
+            <file>file:/C:/Users/JEAN/Documents/NetBeansProjects/PanchisIntegradorV2/src/Vistas/FrmProducto.java</file>
+            <file>file:/C:/Users/JEAN/Documents/NetBeansProjects/PanchisIntegradorV2/src/Vistas/FrmUsuario.java</file>
+        </group>
     </open-files>
 </project-private>

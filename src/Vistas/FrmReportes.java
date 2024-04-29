@@ -35,6 +35,7 @@ public class FrmReportes extends javax.swing.JPanel {
         btn_reporte_productos = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 0, 0));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         Background.setBackground(new java.awt.Color(255, 255, 255));
         Background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -45,6 +46,7 @@ public class FrmReportes extends javax.swing.JPanel {
         btn_reporte_cliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_reporte_cliente.setContentAreaFilled(false);
         btn_reporte_cliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_reporte_cliente.setFocusPainted(false);
         btn_reporte_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_reporte_clienteActionPerformed(evt);
@@ -57,6 +59,7 @@ public class FrmReportes extends javax.swing.JPanel {
         btn_reporte_categorias.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_reporte_categorias.setContentAreaFilled(false);
         btn_reporte_categorias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_reporte_categorias.setFocusPainted(false);
         btn_reporte_categorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_reporte_categoriasActionPerformed(evt);
@@ -69,6 +72,7 @@ public class FrmReportes extends javax.swing.JPanel {
         btn_reporte_ventas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_reporte_ventas.setContentAreaFilled(false);
         btn_reporte_ventas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_reporte_ventas.setFocusPainted(false);
         btn_reporte_ventas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_reporte_ventasActionPerformed(evt);
@@ -81,6 +85,7 @@ public class FrmReportes extends javax.swing.JPanel {
         btn_reporte_productos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_reporte_productos.setContentAreaFilled(false);
         btn_reporte_productos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_reporte_productos.setFocusPainted(false);
         btn_reporte_productos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_reporte_productosActionPerformed(evt);

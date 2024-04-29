@@ -88,7 +88,7 @@ public class Crud_Facturacion extends Conexion {
      * *****************************************************
      */
     public static void CargarComboCliente() {
-        Connection cn = Conexion.conectar();
+        Connection cn = DAO.Conexion.conectar();
         String sql = "select * from tb_cliente";
         Statement st;
         try {
@@ -108,7 +108,7 @@ public class Crud_Facturacion extends Conexion {
     }
 
     public static void CargarComboProducto() {
-        Connection cn = Conexion.conectar();
+        Connection cn = DAO.Conexion.conectar();
         String sql = "select * from tb_producto";
         Statement st;
         try {
@@ -157,7 +157,7 @@ public class Crud_Facturacion extends Conexion {
     public static void DatosDelProducto() {
         try {
             String sql = "select * from tb_producto where nombre = '" + FrmFacturacion.jComboProducto.getSelectedItem() + "'";
-            Connection cn = Conexion.conectar();
+            Connection cn = DAO.Conexion.conectar();
             Statement st;
             st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -238,7 +238,7 @@ public class Crud_Facturacion extends Conexion {
     public static void ObtenerIdCliente() {
         try {
             String sql = "select * from tb_cliente where concat(nombre,' ',apellido) = '" + FrmFacturacion.jComboCliente.getSelectedItem() + "'";
-            Connection cn = Conexion.conectar();
+            Connection cn = DAO.Conexion.conectar();
             Statement st;
             st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -255,7 +255,7 @@ public class Crud_Facturacion extends Conexion {
     public static void RestarStockProductos(int idProducto, int cantidad) {
         int cantidadProductosBaseDeDatos = 0;
         try {
-            Connection cn = Conexion.conectar();
+            Connection cn = DAO.Conexion.conectar();
             String sql = "select idProducto, cantidad from tb_producto where idProducto = '" + idProducto + "'";
             Statement st;
             st = cn.createStatement();
@@ -269,7 +269,7 @@ public class Crud_Facturacion extends Conexion {
         }
 
         try {
-            Connection cn = Conexion.conectar();
+            Connection cn = DAO.Conexion.conectar();
             PreparedStatement consulta = cn.prepareStatement("update tb_producto set cantidad=? where idProducto = '" + idProducto + "'");
             int cantidadNueva = cantidadProductosBaseDeDatos - cantidad;
             consulta.setInt(1, cantidadNueva);

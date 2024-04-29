@@ -70,7 +70,8 @@ public class FrmCliente extends javax.swing.JPanel {
         btn_guardar.setText("GUARDAR");
         btn_guardar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_guardar.setContentAreaFilled(false);
-        btn_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_guardar.setFocusPainted(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,7 +146,8 @@ public class FrmCliente extends javax.swing.JPanel {
         btn_eliminar.setText("ELIMINAR");
         btn_eliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_eliminar.setContentAreaFilled(false);
-        btn_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_eliminar.setFocusPainted(false);
 
         btn_actualizar.setBackground(new java.awt.Color(0, 0, 0));
         btn_actualizar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -153,7 +155,8 @@ public class FrmCliente extends javax.swing.JPanel {
         btn_actualizar.setText("ACTUALIZAR");
         btn_actualizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_actualizar.setContentAreaFilled(false);
-        btn_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_actualizar.setFocusPainted(false);
 
         txt_gestionar_telefono.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Teléfono"));
 
@@ -171,7 +174,8 @@ public class FrmCliente extends javax.swing.JPanel {
         btn_buscar.setText("CONSULTAR");
         btn_buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_buscar.setContentAreaFilled(false);
-        btn_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_buscar.setFocusPainted(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

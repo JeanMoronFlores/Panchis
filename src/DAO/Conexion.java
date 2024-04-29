@@ -14,7 +14,7 @@ public class Conexion {
     public static Connection conectar() {
         try {
 //            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_ventas_prueba", "root", "");
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_pizza", "root", "");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/abase", "root", "");
             return cn;
 
         } catch (SQLException e) {

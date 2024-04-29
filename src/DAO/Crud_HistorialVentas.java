@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
-
 import Vistas.FrmHistorialVentas;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -103,7 +102,7 @@ public class Crud_HistorialVentas {
     public static void EnviarDatosVentaSeleccionada(int idVenta) { //copiado y modificado del Frmcliente, 
 
         try {
-            Connection con = conexion.Conexion.conectar();
+            Connection con = Conexion.conectar();
             PreparedStatement pst = con.prepareStatement(
                     "    select cv.idCabeceraVenta, cv.idCliente, concat(c.nombre, ' ', c.apellido) as cliente, \n"
                     + "    cv.valorPagar, cv.fechaVenta, cv.estado \n"
@@ -132,7 +131,7 @@ public class Crud_HistorialVentas {
     Metodo para cargar los clientes en el jComboBox
      */
     public static void CargarComboClientes() {
-        Connection cn = conexion.Conexion.conectar();
+        Connection cn = Conexion.conectar();
         String sql = "select * from tb_cliente";
         Statement st;
         try {

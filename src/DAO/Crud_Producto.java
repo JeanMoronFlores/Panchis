@@ -298,7 +298,7 @@ public class Crud_Producto extends Conexion {
         Statement st;
 
         try {
-            Connection cn = conexion.Conexion.conectar();
+            Connection cn = Conexion.conectar();
             st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql); //se ejecuta
             while (rs.next()) {
@@ -336,7 +336,7 @@ public class Crud_Producto extends Conexion {
             }
             cn.close();
         } catch (SQLException e) {
-            System.out.println("Error al actualizar producto desde el controlador: " + e);
+            System.out.println("Error al actualizar producto desde el controlador crud_Prodcuto: " + e);
         }
         return respuesta;
     }

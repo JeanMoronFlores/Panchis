@@ -38,7 +38,7 @@ public class Reportes {
      Document documento = new Document();
         try {
             String ruta = System.getProperty("user.home");
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/OneDrive/Escritorio/Reporte_Clientes.pdf"));// hayq e tener mucho cuidado aqui no s epeude encontrar las rutas coreretas
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/OneDrive/Reporte_Clientes.pdf"));// hayq e tener mucho cuidado aqui no s epeude encontrar las rutas coreretas
 //            Image header = Image.getInstance("src/Imagenes/logo panchis 80x80 px.png");
 //            header.scaleToFit(650, 1000);
 //            header.setAlignment(Chunk.ALIGN_CENTER);
@@ -62,7 +62,7 @@ public class Reportes {
             tabla.addCell("Direccion");
 
             try {
-                Connection cn = Conexion.conectar();
+               Connection cn = DAO.Conexion.conectar();
                 PreparedStatement pst = cn.prepareStatement(
                         "select idCliente, concat(nombre, ' ', apellido) as nombres, dni, telefono, direccion from tb_cliente");
                 ResultSet rs = pst.executeQuery();
@@ -101,7 +101,7 @@ public class Reportes {
         Document documento = new Document();
         try {
             String ruta = System.getProperty("user.home");
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/OneDrive/Escritorio/Reporte_Productos.pdf"));
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/OneDrive/Reporte_Productos.pdf"));
 //            Image header = Image.getInstance("src/Imagenes/logo panchis 50x50 px.png");
 //            header.scaleToFit(650, 1000);
 //            header.setAlignment(Chunk.ALIGN_CENTER);
@@ -129,7 +129,7 @@ public class Reportes {
             tabla.addCell("Categoria");
 
             try {
-                Connection cn = Conexion.conectar();
+               Connection cn = DAO.Conexion.conectar();
                 PreparedStatement pst = cn.prepareStatement(
                         "select p.idProducto, p.nombre, p.cantidad, p.precio, p.discripcion, "
                                 + "p.IGV, c.discripcion as categoria, p.estado "
@@ -172,7 +172,7 @@ public class Reportes {
         Document documento = new Document();
         try {
             String ruta = System.getProperty("user.home");
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/OneDrive/Escritorio/Reporte_Categotias.pdf"));
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/OneDrive/Reporte_Categorias.pdf"));
             //formato al texto
             Paragraph parrafo = new Paragraph();
             parrafo.setAlignment(Paragraph.ALIGN_CENTER);
@@ -189,7 +189,7 @@ public class Reportes {
             tabla.addCell("Descripcion");
             tabla.addCell("Estado");
             try {
-                Connection cn = Conexion.conectar();
+               Connection cn = DAO.Conexion.conectar();
                 PreparedStatement pst = cn.prepareStatement(
                         "select * from tb_categoria");
                 ResultSet rs = pst.executeQuery();
@@ -223,7 +223,7 @@ public class Reportes {
         Document documento = new Document();
         try {
             String ruta = System.getProperty("user.home");
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta +"/OneDrive/Escritorio/Reporte_Ventas.pdf"));
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta +"/OneDrive/Reporte_Ventas.pdf"));
             //formato al texto
             Paragraph parrafo = new Paragraph();
             parrafo.setAlignment(Paragraph.ALIGN_CENTER);
@@ -242,7 +242,7 @@ public class Reportes {
             tabla.addCell("Fecha Venta");
             tabla.addCell("Estado");
             try {
-                Connection cn = Conexion.conectar();
+                Connection cn = DAO.Conexion.conectar();
                 PreparedStatement pst = cn.prepareStatement(
                         "select cv.idCabeceraVenta as id, concat(c.nombre, ' ', c.apellido) as cliente, "
                                 + "cv.valorPagar as total, cv.fechaVenta as fecha, cv.estado "

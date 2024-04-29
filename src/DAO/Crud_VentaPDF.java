@@ -17,7 +17,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import conexion.Conexion;
+//import conexion.Conexion;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;

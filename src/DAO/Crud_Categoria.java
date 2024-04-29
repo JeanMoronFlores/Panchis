@@ -28,7 +28,7 @@ public class Crud_Categoria extends Conexion {
      //metodo que muestra en un JTable los registros dela tabla categoria
     public static void CargarTablaCategorias() {
         
-        Connection con = Conexion.conectar();
+        Connection con = DAO.Conexion.conectar();
         DefaultTableModel model = new DefaultTableModel(); //verificar
         String sql = "SELECT idCategoria, discripcion, estado FROM tb_categoria";
         Statement st;
@@ -80,7 +80,7 @@ public class Crud_Categoria extends Conexion {
     //a comparación con el código orifgianl se arregla usanso static
         private static  void EnviarDatosCategoriasSeleccionadas(int idCategoria) {
         try {
-            Connection con = Conexion.conectar();
+            Connection con = DAO.Conexion.conectar();
             PreparedStatement pst = con.prepareStatement(
                     "SELECT * FROM tb_categoria WHERE idCategoria ='" + idCategoria + "'");
             ResultSet rs = pst.executeQuery();
@@ -98,7 +98,7 @@ public class Crud_Categoria extends Conexion {
 
    public boolean guardar (Categoria objeto){
         boolean respuesta=false;
-        Connection cn = Conexion.conectar();
+        Connection cn = DAO.Conexion.conectar();
         try {
             PreparedStatement consulta=cn.prepareStatement( "INSERT INTO tb_categoria values(?,?,?)");
             consulta.setInt(1, 0); // id
@@ -125,7 +125,7 @@ public class Crud_Categoria extends Conexion {
         Statement st;
 
         try {
-            Connection cn = Conexion.conectar();
+           Connection cn = DAO.Conexion.conectar();
             st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
@@ -141,7 +141,7 @@ public class Crud_Categoria extends Conexion {
     public boolean actualizar (Categoria objeto, int idCategoria){
         
         boolean respuesta=false;
-        Connection cn =Conexion.conectar();
+        Connection cn = DAO.Conexion.conectar();
         try {
             PreparedStatement consulta = cn.prepareStatement( "UPDATE tb_categoria SET discripcion=? WHERE idCategoria = '"+idCategoria+"'");
             consulta.setString(1, objeto.getDiscripcion()); // id
@@ -162,7 +162,7 @@ public class Crud_Categoria extends Conexion {
     //metodo para eliminar categoria
     public boolean eliminar (int idCategoria){
         boolean respuesta=false;
-        Connection cn = Conexion.conectar();
+        Connection cn = DAO.Conexion.conectar();
         try {
             PreparedStatement consulta=cn.prepareStatement( "DELETE FROM tb_categoria WHERE idCategoria = '"+idCategoria+"'");
             consulta.executeUpdate(); //

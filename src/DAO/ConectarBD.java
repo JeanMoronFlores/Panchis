@@ -15,7 +15,7 @@ public class ConectarBD implements Parametros{
             conexion = DriverManager.getConnection(RUTA,USUARIO,CLAVE);
             st = conexion.createStatement();
         }catch(Exception ex){
-            System.out.println("error al coenctar en la base de datos en conectarBD");
+            System.out.println("error al conectar en la base de datos en conectarBD");
         }
     
     }

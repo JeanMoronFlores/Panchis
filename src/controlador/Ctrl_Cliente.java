@@ -47,7 +47,7 @@ public class Ctrl_Cliente implements ActionListener {
 
             } else {
                 String clienteBuscar = FrmCliente.txt_buscar_dniCliente.getText().trim();
-                Connection cn = Conexion.conectar();
+                Connection cn = DAO.Conexion.conectar();
                 String sql = "SELECT * FROM tb_cliente where dni = '" + clienteBuscar + "'";
                 Statement st;
                 try {

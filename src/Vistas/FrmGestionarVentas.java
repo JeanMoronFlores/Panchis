@@ -77,6 +77,7 @@ public class FrmGestionarVentas extends javax.swing.JPanel {
         btn_actualizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_actualizar.setContentAreaFilled(false);
         btn_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_actualizar.setFocusPainted(false);
 
         txt_fecha.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Fecha"));
         txt_fecha.setEnabled(false);

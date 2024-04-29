@@ -20,7 +20,6 @@ public class Login extends javax.swing.JFrame {
 
     // para abir la venta crear usuario
 //    CrearUsuario op1;
-
     public Login() {
         initComponents();
         //creamos objetos del contenido
@@ -297,9 +296,15 @@ public class Login extends javax.swing.JFrame {
             Usuario usuario = new Usuario();
             usuario.setUsuario(jtxtusuario.getText().trim());
             usuario.setPassword(jPasswordField1.getText().trim());
+
             if (controlUsuario.loginUser(usuario)) {
-                //JOptionPane.showMessageDialog(null, "ingreso correcto");
-                Dashboard menu = new Dashboard();
+
+                int idRol = controlUsuario.obtenerIdRolUsuario(usuario.getIdUsuario());
+                // Crear una instancia de Dashboard y establecer el ID del rol
+                Dashboard menu = Dashboard.getInstance();
+                menu.setIdRol(idRol);
+                menu.setVisible(true);
+                this.dispose();
                 menu.setVisible(true);
                 this.dispose();
             } else {
@@ -309,4 +314,5 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ingrese las credenciales correctas");
         }
     }
+
 }

@@ -53,7 +53,7 @@ public class Ctrl_Facturacion implements ActionListener {
         if (e.getSource() == vista.btn_buscar) {
             //BUSCA EL CLIENTE SEGUN EL DNI
             String clienteBuscar = FrmFacturacion.txt_buscar_dni.getText().trim();
-            Connection cn = Conexion.conectar();
+           Connection cn = DAO.Conexion.conectar();
             String sql = "select nombre, apellido from tb_cliente where DNI = '" + clienteBuscar + "'";
             Statement st;
             try {

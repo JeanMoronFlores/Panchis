@@ -102,7 +102,7 @@ public class Crud_GestionarVentas {
     public static void EnviarDatosVentaSeleccionada(int idVenta) { //copiado y modificado del Frmcliente, 
 
         try {
-            Connection con = conexion.Conexion.conectar();
+           Connection con = Conexion.conectar();
             PreparedStatement pst = con.prepareStatement(
                     "    select cv.idCabeceraVenta, cv.idCliente, concat(c.nombre, ' ', c.apellido) as cliente, \n"
                     + "    cv.valorPagar, cv.fechaVenta, cv.estado \n"
@@ -131,7 +131,7 @@ public class Crud_GestionarVentas {
     Metodo para cargar los clientes en el jComboBox
      */
     public static void CargarComboClientes() {
-        Connection cn = conexion.Conexion.conectar();
+        Connection cn = DAO.Conexion.conectar();
         String sql = "select * from tb_cliente";
         Statement st;
         try {

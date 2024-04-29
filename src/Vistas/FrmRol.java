@@ -29,9 +29,9 @@ public class FrmRol extends javax.swing.JPanel {
         btn_guardar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_categoria = new javax.swing.JTable();
+        jTable_rol = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        txt_gestionar_discripcion = new javax.swing.JTextField();
+        txt_gestionar_nombre = new javax.swing.JTextField();
         btn_actualizar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         btn_buscar = new javax.swing.JButton();
@@ -96,7 +96,7 @@ public class FrmRol extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jTable_categoria.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_rol.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null}
             },
@@ -104,12 +104,12 @@ public class FrmRol extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3"
             }
         ));
-        jScrollPane1.setViewportView(jTable_categoria);
+        jScrollPane1.setViewportView(jTable_rol);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("GESTIONAR ROL");
+        jLabel2.setText("GESTIONAR ROLES");
 
-        txt_gestionar_discripcion.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "NOMBRE DE ROL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        txt_gestionar_nombre.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "NOMBRE DE ROL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         btn_actualizar.setBackground(new java.awt.Color(0, 0, 0));
         btn_actualizar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -161,13 +161,13 @@ public class FrmRol extends javax.swing.JPanel {
                         .addGap(100, 100, 100)
                         .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txt_gestionar_discripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_gestionar_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txt_buscar_idRol, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(70, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(295, 295, 295)
+                .addGap(288, 288, 288)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -180,7 +180,7 @@ public class FrmRol extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_gestionar_discripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_gestionar_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_buscar_idRol, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -219,9 +219,9 @@ public class FrmRol extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public static javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTable jTable_categoria;
+    public static javax.swing.JTable jTable_rol;
     public static javax.swing.JTextField txt_buscar_idRol;
-    public static javax.swing.JTextField txt_gestionar_discripcion;
+    public static javax.swing.JTextField txt_gestionar_nombre;
     public static javax.swing.JTextField txt_rol;
     // End of variables declaration//GEN-END:variables
 }

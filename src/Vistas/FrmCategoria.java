@@ -5,6 +5,7 @@
 package Vistas;
 import DAO.Crud_Categoria;
 import controlador.Ctrl_Categoria;
+import javax.swing.table.DefaultTableModel;
 public class FrmCategoria extends javax.swing.JPanel {
 
     public FrmCategoria() {
@@ -13,6 +14,18 @@ public class FrmCategoria extends javax.swing.JPanel {
         Crud_Categoria.CargarTablaCategorias();
         // Crear la instancia del controlador y pasarle la instancia de FrmCategoria
         Ctrl_Categoria controlador = new Ctrl_Categoria(this);
+        
+      /////////////////////////////////////////////////////////////////////777  
+//               // Establece el modelo de la tabla como no editable, sale error al enviar datos 
+
+//        jTable_categoria.setModel(new DefaultTableModel() {
+//            @Override
+//            public boolean isCellEditable(int row, int column) {
+//                return false; // Todas las celdas no son editables
+//            }
+//        });
+//        
+        /////////////////////////////////////////
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,6 +68,7 @@ public class FrmCategoria extends javax.swing.JPanel {
         btn_guardar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_guardar.setContentAreaFilled(false);
         btn_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_guardar.setFocusPainted(false);
         btn_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_guardarActionPerformed(evt);
@@ -116,6 +130,7 @@ public class FrmCategoria extends javax.swing.JPanel {
         btn_actualizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_actualizar.setContentAreaFilled(false);
         btn_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_actualizar.setFocusPainted(false);
         btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_actualizarActionPerformed(evt);
@@ -129,6 +144,7 @@ public class FrmCategoria extends javax.swing.JPanel {
         btn_eliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_eliminar.setContentAreaFilled(false);
         btn_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_eliminar.setFocusPainted(false);
         btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_eliminarActionPerformed(evt);
@@ -142,6 +158,7 @@ public class FrmCategoria extends javax.swing.JPanel {
         btn_buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_buscar.setContentAreaFilled(false);
         btn_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_buscar.setFocusPainted(false);
 
         txt_buscar_idCategoria.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Digita id para Buscar categoria", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 

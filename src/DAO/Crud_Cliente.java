@@ -158,7 +158,7 @@ public class Crud_Cliente extends Conexion {
         Statement st;
 
         try {
-            Connection cn = conexion.Conexion.conectar();
+            Connection cn = DAO.Conexion.conectar();
             st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql); //se ejecuta
             while (rs.next()) {

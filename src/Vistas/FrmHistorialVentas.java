@@ -80,6 +80,7 @@ public class FrmHistorialVentas extends javax.swing.JPanel {
         btn_buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_buscar.setContentAreaFilled(false);
         btn_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_buscar.setFocusPainted(false);
 
         txt_fecha.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Fecha de venta"));
         txt_fecha.setEnabled(false);

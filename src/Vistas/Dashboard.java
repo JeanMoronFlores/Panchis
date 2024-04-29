@@ -4,72 +4,74 @@
  */
 package Vistas;
 
+import DAO.Conexion;
+import DAO.Crud_Usuario;
+import static Vistas.Dashboard.Contenido;
+import static Vistas.Dashboard.ShowPanel;
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.swing.JPanel;
 
 /**
  *
  * @author Jean
  */
-
 //<a href="https://www.flaticon.es/iconos-gratis/pizza" title="pizza iconos">Pizza iconos creados por Freepik - Flaticon</a>
-
 public class Dashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form Dashboard
      */
-    private String rolUsuario;
-    
-    public Dashboard() {
-        // mostrara el jform de bienvenida al iniciar
+    //singleton el dashboard
+    private static Dashboard instance;
+    private int idRol;
+
+    private Dashboard() {
         initComponents();
-        //Bienvenida p0 = new Bienvenida(); **remplazado por el form de menú
-        // p0.setSize(1010,492);// forzamos a darle el tamaño para evitar errores
-        //p0.setLocation(0, 0); //centra
-
-        FrmMenu p0 = new FrmMenu();
-        ShowPanel(p0);
-
-        Contenido.removeAll();
-        Contenido.add(p0, BorderLayout.CENTER);
-        Contenido.revalidate();
-        Contenido.repaint();
+        this.idRol = 0; // Valor predeterminado del rol
         this.setTitle("Menú Panchi's Pizza");
-        /*
-         */
+    }
 
+    public static Dashboard getInstance() {
+        if (instance == null) {
+            instance = new Dashboard();
+        }
+        return instance;
     }
-        public Dashboard(String rol) {
-        this.rolUsuario = rol;
-        initComponents();
-        // Resto del código...
-        bloquearBotonesSegunRol();
+
+    public static void setIdRol(int idRol) {
+        getInstance().idRol = idRol;
+        getInstance().habilitarBotonesSegunRol();
     }
-        
-         // Esta función bloquea los botones según el rol del usuario
-    private void bloquearBotonesSegunRol() {
-        // Supongamos que solo hay dos roles posibles: "administrador" y "empleado"
-        if (rolUsuario.equals("1")) {
-            // Aquí habilitas los botones para el rol de administrador
-            jbtnUsuario.setEnabled(true);
-            jbtnProducto.setEnabled(true);
-            // Otros botones que el administrador pueda usar
-        } else if (rolUsuario.equals("2")) {
-            // Aquí habilitas los botones para el rol de empleado
+
+    private void habilitarBotonesSegunRol() {
+        // Si el ID del rol es 1 (ADMIN), habilitar todos los botones
+        // Si el ID del rol es 2 (CAJERO), deshabilitar botones de configuración, etc.
+        if (idRol == 1) {
+//            jbtnUsuario.setEnabled(true);
+        } else if (idRol == 2) {
             jbtnUsuario.setEnabled(false);
-            jbtnProducto.setEnabled(true);
-            // Otros botones que el empleado pueda usar
+            jbtnCategoria.setEnabled(false);
+            jbtnProducto.setEnabled(false);
+        } else if (idRol == 3) {
+            jbtnUsuario.setEnabled(false);
+            jbtnCategoria.setEnabled(false);
+            jbtnCliente.setEnabled(false);
+            jbtnFacturar.setEnabled(false);
+            jbtnHistorial.setEnabled(false);
+            jbtnProducto.setEnabled(false);
+            jbtnReportes.setEnabled(false);
         }
     }
-        
-        
-        
-        
-    //ICONO DEL SISTEMA
 
+    //ICONO DEL SISTEMA
+    @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/logo panchis 50 x50 px.png"));
         return retValue;
@@ -162,7 +164,8 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnUsuario.setBorder(null);
         jbtnUsuario.setBorderPainted(false);
         jbtnUsuario.setContentAreaFilled(false);
-        jbtnUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbtnUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnUsuario.setFocusPainted(false);
         jbtnUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnUsuarioActionPerformed(evt);
@@ -174,7 +177,8 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnSalir.setText("CERRAR SESION");
         jbtnSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jbtnSalir.setContentAreaFilled(false);
-        jbtnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbtnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnSalir.setFocusPainted(false);
         jbtnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnSalirActionPerformed(evt);
@@ -194,7 +198,8 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnProducto.setBorder(null);
         jbtnProducto.setBorderPainted(false);
         jbtnProducto.setContentAreaFilled(false);
-        jbtnProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbtnProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnProducto.setFocusPainted(false);
         jbtnProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnProductoActionPerformed(evt);
@@ -214,7 +219,8 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnCategoria.setBorder(null);
         jbtnCategoria.setBorderPainted(false);
         jbtnCategoria.setContentAreaFilled(false);
-        jbtnCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbtnCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnCategoria.setFocusPainted(false);
         jbtnCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnCategoriaActionPerformed(evt);
@@ -231,7 +237,8 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnFacturar.setBorder(null);
         jbtnFacturar.setBorderPainted(false);
         jbtnFacturar.setContentAreaFilled(false);
-        jbtnFacturar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbtnFacturar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnFacturar.setFocusPainted(false);
         jbtnFacturar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnFacturarActionPerformed(evt);
@@ -248,7 +255,8 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnReportes.setBorder(null);
         jbtnReportes.setBorderPainted(false);
         jbtnReportes.setContentAreaFilled(false);
-        jbtnReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbtnReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnReportes.setFocusPainted(false);
         jbtnReportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnReportesActionPerformed(evt);
@@ -268,7 +276,8 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnHistorial.setBorder(null);
         jbtnHistorial.setBorderPainted(false);
         jbtnHistorial.setContentAreaFilled(false);
-        jbtnHistorial.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbtnHistorial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnHistorial.setFocusPainted(false);
         jbtnHistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnHistorialActionPerformed(evt);
@@ -282,7 +291,8 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnMenu.setBorder(null);
         jbtnMenu.setBorderPainted(false);
         jbtnMenu.setContentAreaFilled(false);
-        jbtnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbtnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnMenu.setFocusPainted(false);
         jbtnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnMenuActionPerformed(evt);
@@ -300,7 +310,8 @@ public class Dashboard extends javax.swing.JFrame {
         jbtnCliente.setBorder(null);
         jbtnCliente.setBorderPainted(false);
         jbtnCliente.setContentAreaFilled(false);
-        jbtnCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jbtnCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnCliente.setFocusPainted(false);
         jbtnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnClienteActionPerformed(evt);
@@ -454,12 +465,25 @@ public class Dashboard extends javax.swing.JFrame {
     private void jbtnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnUsuarioActionPerformed
         FrmUsuario p1 = new FrmUsuario();
         ShowPanel(p1);
+        registrarAccion("Botón de Usuario presionado");
 
     }//GEN-LAST:event_jbtnUsuarioActionPerformed
 
     private void jbtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSalirActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+//        registrarAccion("Botón de cerrar sesión presionado");
+//        System.exit(0);
+
+// Registrar la acción de presionar el botón Salir
+        registrarAccion("Botón Salir presionado");
+
+        // Cerrar la ventana actual
+        this.dispose();
+
+        // Abrir una nueva ventana de inicio de sesión
+        Login login = new Login();
+        login.setVisible(true);
+
 
     }//GEN-LAST:event_jbtnSalirActionPerformed
 
@@ -467,53 +491,66 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         FrmProducto p2 = new FrmProducto();
         ShowPanel(p2);
-
+        registrarAccion("Botón de Producto presionado");
     }//GEN-LAST:event_jbtnProductoActionPerformed
 
     private void jbtnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnClienteActionPerformed
         FrmCliente p3 = new FrmCliente();
         ShowPanel(p3);
+        registrarAccion("Botón de Cliente presionado");
     }//GEN-LAST:event_jbtnClienteActionPerformed
 
     private void jbtnCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCategoriaActionPerformed
         // TODO add your handling code here:
         FrmCategoria p4 = new FrmCategoria();
         ShowPanel(p4);
+        registrarAccion("Botón de Categoria presionado");
     }//GEN-LAST:event_jbtnCategoriaActionPerformed
 
     private void jbtnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnFacturarActionPerformed
         // TODO add your handling code here:
         FrmFacturacion p5 = new FrmFacturacion();
         ShowPanel(p5);
+        registrarAccion("Botón de Facturación presionado");
     }//GEN-LAST:event_jbtnFacturarActionPerformed
-    
+
     private void jbtnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnReportesActionPerformed
         // TODO add your handling code here:
         FrmReportes p6 = new FrmReportes();
         ShowPanel(p6);
+        registrarAccion("Botón de Reportes presionado");
     }//GEN-LAST:event_jbtnReportesActionPerformed
 
     private void jbtnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnHistorialActionPerformed
         // TODO add your handling code here:}}
         FrmHistorialVentas p7 = new FrmHistorialVentas();
         ShowPanel(p7);
+        registrarAccion("Botón Historial presionado");
     }//GEN-LAST:event_jbtnHistorialActionPerformed
 
     private void jbtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnMenuActionPerformed
         // TODO add your handling code here:
         FrmMenu p8 = new FrmMenu();
         ShowPanel(p8);
+        registrarAccion("Botón Menú presionado");
     }//GEN-LAST:event_jbtnMenuActionPerformed
 
     /**
      * @param args the command line arguments
      */
+//    esto se reemplazará con el de abajo 
     public static void main(String args[]) {
         // Invocar la ventana del panel de control
         java.awt.EventQueue.invokeLater(() -> {
             new Dashboard().setVisible(true);
         });
     }
+//    public static void main(String args[]) {
+//        // Invocar la ventana del panel de control
+//        java.awt.EventQueue.invokeLater(() -> {
+//            new Dashboard(1).setVisible(true); // Establecer un ID de rol predeterminado
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Background;
@@ -545,7 +582,7 @@ public class Dashboard extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     //nos sirve para cambiar entre jpanels cuando presioanmos un boton en el dashboardd
-    public static void ShowPanel(JPanel p) {
+    public static void ShowPanel(JPanel p) { //borre el static
 
         p.setSize(1010, 500);// forzamos a darle el tamaño para evitar errores
         p.setLocation(0, 0); //centra
@@ -555,5 +592,24 @@ public class Dashboard extends javax.swing.JFrame {
         Contenido.repaint();
 
     }
-    
+    // Método para registrar la acción en la tabla de auditoría
+
+    private void registrarAccion(String accion) {
+        try {
+            Connection con = Conexion.conectar();
+            String sql = "INSERT INTO tb_auditoria (idUsuario, fecha_conexion, hora_conexion, accion_realizada, ip_computadora) "
+                    + "VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, Crud_Usuario.idUsuario); // Suponiendo que ya tienes el idUsuario disponible
+            ps.setTimestamp(2, new Timestamp(new Date().getTime())); // Fecha actual
+            ps.setTimestamp(3, new Timestamp(new Date().getTime())); // Hora actual
+            ps.setString(4, accion); // Acción realizada
+            ps.setString(5, Crud_Usuario.obtenerDireccionIP()); // IP de la computadora
+            ps.executeUpdate();
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al registrar la acción en la auditoría: " + e);
+        }
+    }
+
 }

@@ -3,10 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
-//import Vistas.FrmCategoria;
-import Vistas.FrmCategoria;
-import static Vistas.FrmCategoria.jTable_categoria;
-import conexion.Conexion;
+
+
+import Vistas.FrmRol;
+//import conexion.Conexion;
+import static Vistas.FrmRol.jTable_rol;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -16,10 +17,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import modelo.Categoria;
+import modelo.Rol;
+
 
 public class Crud_Rol extends Conexion {
-  public static int idCategoria;
+  public static int idRol;
     public Crud_Rol() {
         
     }
@@ -28,15 +30,15 @@ public class Crud_Rol extends Conexion {
      //metodo que muestra en un JTable los registros de la tabla rol
     public static void CargarTablaRol() {
         
-        Connection con = Conexion.conectar();
+        Connection con = DAO.Conexion.conectar();
         DefaultTableModel model = new DefaultTableModel(); //verificar
         String sql = "SELECT idRol, rol, estado FROM tb_Rol";
         Statement st;
         try {
             st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            FrmCategoria.jTable_categoria = new JTable(model);
-            FrmCategoria.jScrollPane1.setViewportView(FrmCategoria.jTable_categoria);
+            FrmRol.jTable_rol = new JTable(model);
+            FrmRol.jScrollPane1.setViewportView(FrmRol.jTable_rol);
 
            
             model.addColumn("id");
@@ -59,50 +61,51 @@ public class Crud_Rol extends Conexion {
                 }
                 model.addRow(fila);
             }
-            // Setear el modelo a la tabla jTable_categoria
+            // Setear el modelo a la tabla jTable_categoria //
 //          FrmCategoria.jTable_categoria.setModel(model);
+
         } catch (SQLException e) {
-            System.out.println("Error al llenar la tabla categoria:" + e);
+            System.out.println("Error al llenar la tabla rol:" + e);
         }
-        jTable_categoria.addMouseListener(new MouseAdapter() {
+        FrmRol.jTable_rol.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                int fila_point = jTable_categoria.rowAtPoint(e.getPoint());
+                int fila_point = FrmRol.jTable_rol.rowAtPoint(e.getPoint());
                 int columna_point = 0;
                 if (fila_point > -1) {
-                    idCategoria = (int) model.getValueAt(fila_point, columna_point);
-                    EnviarDatosCategoriasSeleccionadas(idCategoria);
+                    idRol = (int) model.getValueAt(fila_point, columna_point);
+                    EnviarDatosRolesSeleccionados(idRol);
                 }
             }
         });
 
     }
     //a comparación con el código orifgianl se arregla usanso static
-        private static  void EnviarDatosCategoriasSeleccionadas(int idCategoria) {
+        private static  void EnviarDatosRolesSeleccionados(int idRol) {
         try {
-            Connection con = Conexion.conectar();
+            Connection con = DAO.Conexion.conectar();
             PreparedStatement pst = con.prepareStatement(
-                    "SELECT * FROM tb_categoria WHERE idCategoria ='" + idCategoria + "'");
+                    "SELECT * FROM tb_rol WHERE idRol ='" + idRol + "'");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                FrmCategoria.txt_gestionar_discripcion.setText(rs.getString("discripcion")); //"discripcion" campo registrado con ese error ortografico en la BBDD
+                FrmRol.txt_gestionar_nombre.setText(rs.getString("rol")); //"nombre" campo registrado con ese error ortografico en la BBDD
             }
             con.close();
 
         } catch (SQLException e) {
-            System.out.println("Error al seleccionar categoria" + e);
+            System.out.println("Error al seleccionar rol" + e);
         }
     }
         
         ////////////////////////////////////////////////////////////////////////
 
-   public boolean guardar (Categoria objeto){
+   public boolean guardar (Rol objeto){
         boolean respuesta=false;
         Connection cn = Conexion.conectar();
         try {
-            PreparedStatement consulta=cn.prepareStatement( "INSERT INTO tb_categoria values(?,?,?)");
+            PreparedStatement consulta=cn.prepareStatement( "INSERT INTO tb_rol values(?,?,?)");
             consulta.setInt(1, 0); // id
-            consulta.setString(2, objeto.getDiscripcion());
+            consulta.setString(2, objeto.getRol());
             consulta.setInt(3, objeto.getEstado());
   
             
@@ -112,16 +115,16 @@ public class Crud_Rol extends Conexion {
             cn.close();
      
             } catch (SQLException e){
-            System.out.println("Error al guardar categoria"+e);
+            System.out.println("Error al guardar rol desde el CRUD"+e);
         }
       
         return respuesta;
     }
 
-//metodo para validar la existencia de la  categoria
-   public boolean existeCategoria(String categoria) {
+//metodo para validar la existencia del rol
+   public boolean existeRol(String rol) {
         boolean respuesta = false;
-        String sql = "SELECT discripcion FROM tb_categoria where discripcion = '" + categoria + "';";
+        String sql = "SELECT discripcion FROM tb_rol where rol = '" + rol + "';";
         Statement st;
 
         try {
@@ -133,18 +136,18 @@ public class Crud_Rol extends Conexion {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al consultar categoria: " + e);
+            System.out.println("Error al consultar rol: " + e);
         }
         return respuesta;
     }
-         //metodo para actualizar categoria
-    public boolean actualizar (Categoria objeto, int idCategoria){
+         //metodo para actualizar Rol
+    public boolean actualizar (Rol objeto, int idRol){
         
         boolean respuesta=false;
         Connection cn =Conexion.conectar();
         try {
-            PreparedStatement consulta = cn.prepareStatement( "UPDATE tb_categoria SET discripcion=? WHERE idCategoria = '"+idCategoria+"'");
-            consulta.setString(1, objeto.getDiscripcion()); // id
+            PreparedStatement consulta = cn.prepareStatement( "UPDATE tb_rol SET rol=? WHERE idRol = '"+idRol+"'");
+            consulta.setString(1, objeto.getRol()); // id
 
   
             if (consulta.executeUpdate()>0) {
@@ -153,18 +156,18 @@ public class Crud_Rol extends Conexion {
             cn.close();
      
             } catch (SQLException e){
-            System.out.println("Error al actualizar categoria desde el crud_categoria"+e);
+            System.out.println("Error al actualizar rol desde el crud_rol"+e);
         }
       
         return respuesta;
     }
     
-    //metodo para eliminar categoria
-    public boolean eliminar (int idCategoria){
+    //metodo para eliminar Rol
+    public boolean eliminar (int idRol){
         boolean respuesta=false;
         Connection cn = Conexion.conectar();
         try {
-            PreparedStatement consulta=cn.prepareStatement( "DELETE FROM tb_categoria WHERE idCategoria = '"+idCategoria+"'");
+            PreparedStatement consulta=cn.prepareStatement( "DELETE FROM tb_rol WHERE idRol = '"+idRol+"'");
             consulta.executeUpdate(); //
   
             if (consulta.executeUpdate()>0) {
@@ -173,12 +176,12 @@ public class Crud_Rol extends Conexion {
             cn.close();
      
             } catch (SQLException e){
-            System.out.println("Error al eliminar categoria"+e);
+            System.out.println("Error al eliminar Rol"+e);
         }
       
         return respuesta;
 //     try {
-//            PreparedStatement consulta=cn.prepareStatement( "UPDATE tb_categoria set estado='0' WHERE idCategoria = '"+idCategoria+"'");
+//            PreparedStatement consulta=cn.prepareStatement( "UPDATE tb_rol set estado='0' WHERE idRol = '"+idRol+"'");
 //            consulta.executeUpdate(); //
 //  
 //            if (consulta.executeUpdate()>0) {
@@ -187,7 +190,7 @@ public class Crud_Rol extends Conexion {
 //            cn.close();
 //     
 //            } catch (SQLException e){
-//            System.out.println("Error al eliminar categoria"+e);
+//            System.out.println("Error al eliminar Rol"+e);
 //        }
 //      
 //        return respuesta;

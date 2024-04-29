@@ -69,6 +69,7 @@ public class FrmFacturacion extends javax.swing.JPanel {
         btn_registrar_venta = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setPreferredSize(new java.awt.Dimension(1010, 500));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -189,6 +190,7 @@ public class FrmFacturacion extends javax.swing.JPanel {
         btn_registro.setText("REGISTRO DE VENTAS");
         btn_registro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         btn_registro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_registro.setFocusPainted(false);
         btn_registro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_registroActionPerformed(evt);
@@ -201,6 +203,7 @@ public class FrmFacturacion extends javax.swing.JPanel {
         btn_pago.setText("PAGO ELECTRÓNICO");
         btn_pago.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         btn_pago.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_pago.setFocusPainted(false);
         btn_pago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_pagoActionPerformed(evt);
@@ -284,6 +287,7 @@ public class FrmFacturacion extends javax.swing.JPanel {
         btn_registrar_venta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btn_registrar_venta.setContentAreaFilled(false);
         btn_registrar_venta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_registrar_venta.setFocusPainted(false);
         btn_registrar_venta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_registrar_ventaActionPerformed(evt);
